@@ -401,58 +401,54 @@ Screen:
 
             Screen:
                 name: "getface"
-
+                
                 MDBoxLayout:
-                    orientation: 'vertical'
-                    pos_hint: {"top":.962}
-
-                    MyCamera:
-                        id: camera
-                        resolution: (1280, 960)
-                        play: True
-                        keep_ratio: True
-                        allow_stretch: True
-
-                    MDLabel:
-                        id: capture_label
-                        text: 'Press "Start Capture" to begin capturing.'
-                        height: "30dp"
-                        halign: 'center'
-
+                    padding: 10
+                    orientation: 'horizontal'
+                    halign: 'center'
+                    adaptive_height: True
                     MDRaisedButton:
                         id: start_button
                         text: 'Continue Capture'
-                        size: ("200dp", "30dp")
-                        pos_hint: {'center_x': 0.5}
                         on_release: app.start_continuous_capture()
+                    MDLabel:
+                        id: capture_label
+                        text: 'Press "Start Capture" to begin capturing.'
+                        font_style: 'Body1'
+                        halign: 'center'
+                        adaptive_height: True
+
+                MyCamera:
+                    id: camera
+                    resolution: (1280, 960)
+                    play: True
+                    keep_ratio: True
+                    allow_stretch: True
+                    adaptive_width: True
 
                             
             Screen:
                 name: "face_verification"
 
                 MDBoxLayout:
-                    orientation: 'vertical'
-                    pos_hint: {"top":.962}
+                    orientation: 'horizontal'
+                    padding: [350,10,10,10]
+                    spacing: 10
 
-                    MyCamera:
-                        id: face_camera
-                        resolution: (1280, 960)
-                        play: True
-                        allow_stretch: True
-                        keep_ratio: True
-                    
                     MDRaisedButton:
                         text: 'Re-Verificate'
-                        size: ("200dp", "30dp")
-                        pos_hint: {'center_x': 0.5}
                         on_press: app.start_continuous_verification()
 
                     MDRaisedButton:
                         text: 'Back to Home'
-                        size: ("200dp", "30dp")
-                        pos_hint: {'center_x': 0.5}
                         on_press: app.root.ids.screen_manager.current = "scr 1"
 
+                MyCamera:
+                    id: face_camera
+                    resolution: (1280, 960)
+                    play: True
+                    allow_stretch: True
+                    keep_ratio: True
 
             Screen:
                 

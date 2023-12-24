@@ -492,7 +492,8 @@ class SecureMemo(MDApp):
     def start_continuous_capture(self):
         self.root.ids.capture_label.text = 'Capturing...'
         face_cascade = CascadeClassifier("database_files\\haarcascade_frontalface_default.xml")
-        for i in range(100):
+        self.capture_counter = 1
+        for i in range(50):
             Clock.schedule_once(lambda dt: self.capture_frame(face_cascade), i * 0.5)
         
 
@@ -598,7 +599,7 @@ class SecureMemo(MDApp):
                 x2 = x2.reshape(-1)
                 dist = distance.cosine(x1, x2)
 
-                if(dist<0.3):
+                if(dist<0.25):
                     toast("Match, Login successful")
                     print(dist)
                     self.root.ids.screen_manager.current = "scr 2"
@@ -618,12 +619,9 @@ class SecureMemo(MDApp):
  
     def remove_face_folder(self):
         checkoldpass=open('database_files\\password.txt', 'r+')
-        # face_vector=open('database_files\\face_vector.txt', 'r+')
 
         Oldpass = checkoldpass.read()
         if Oldpass == self.root.ids.rmv_face_pass.text:
-            # face_vector.truncate(0)
-            # face_vector.close()
             rmtree("database_files\\facial_dataset")
             checkoldpass.close()
             toast("Face data removed successfully")
@@ -643,12 +641,8 @@ class SecureMemo(MDApp):
 
     def change_face(self):
         checkoldpass=open('database_files\\password.txt', 'r+')
-        # face_vector=open('database_files\\face_vector.txt', 'r+')
-
         Oldpass = checkoldpass.read()
         if Oldpass == self.root.ids.change_face_pass.text:
-            # face_vector.truncate(0)
-            # face_vector.close()
             rmtree("database_files\\facial_dataset")
             checkoldpass.close()
             toast("Face data removed successfully")

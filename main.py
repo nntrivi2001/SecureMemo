@@ -490,6 +490,7 @@ class SecureMemo(MDApp):
 
         
     def start_continuous_capture(self):
+        self.capture_counter = 0
         self.root.ids.capture_label.text = 'Capturing...'
         face_cascade = CascadeClassifier("database_files\\haarcascade_frontalface_default.xml")
         for i in range(100):

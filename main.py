@@ -498,7 +498,7 @@ class SecureMemo(MDApp):
         
 
     def capture_frame(self, face_cascade):
-        if self.capture_counter > 30:
+        if self.capture_counter > 15:
             return
             
         texture = self.root.ids.camera.texture
@@ -513,9 +513,9 @@ class SecureMemo(MDApp):
                 self.capture_counter += 1 
                 print(f"Captured image {self.capture_counter - 1}")
 
-            self.root.ids.capture_label.text = f'Captured {self.capture_counter -1}/{30} images.'
+            self.root.ids.capture_label.text = f'Captured {self.capture_counter -1}/{15} images.'
 
-            if self.capture_counter >= 30:
+            if self.capture_counter >= 15:
                 self.root.ids.screen_manager.current = 'settings'
                 toast("Cập nhập dữ liệu khuôn mặt thành công!")
             
@@ -542,7 +542,7 @@ class SecureMemo(MDApp):
             if not path.isdir(path.join("database_files", "facial_verification")):
                 mkdir(path.join("database_files", "facial_verification"))
 
-            for i in range(30):
+            for i in range(15):
                 Clock.schedule_once(lambda dt: self.face_verification(img1, face_cascade, inference_model), i * 1.5)
 
 
@@ -599,7 +599,7 @@ class SecureMemo(MDApp):
                 x2 = x2.reshape(-1)
                 dist = distance.cosine(x1, x2)
 
-                if(dist<0.25):
+                if(dist<0.225):
                     toast("Match, Login successful")
                     print(dist)
                     self.root.ids.screen_manager.current = "scr 2"

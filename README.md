@@ -229,19 +229,4 @@ SecureMemo/
 - Enable/disable in settings
 - Notification schedule managed by `notification.py`
 
-## Future Improvements
-
-- [ ] Migrate from text-file databases to SQLite
-- [ ] Rich text editing for notes
-- [ ] Calendar view for task scheduling
-- [ ] Cloud sync for tasks and notes
-- [ ] Biometric fingerprint authentication
-- [ ] Encrypted password storage (hashing)
-- [ ] Export tasks/notes to PDF or CSV
-- [ ] Search and filter functionality
-- [ ] Recurring task support
-- [ ] Drag-and-drop task prioritization
-
-## License
-
 This project is open source and available for educational and research purposes.
